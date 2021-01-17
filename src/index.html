@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <title>Image searcher</title>
 </head>
 <body>
-    <h1>Hello my Lovely Js25</h1>
+  <main>
+    <form action="" class="search-form">
+      <label for="">Enter your query: <input type="text" class="search-input" name="query" autocomplete="off" placeholder="Cat"></label>
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+    <ul class="gallery"></ul>
+    <button type="button" class="next-page-btn is-hidden">Load more...</button>
+  </main>
 </body>
 </html>
