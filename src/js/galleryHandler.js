@@ -9,7 +9,9 @@ function newRequest(query) {
   refs.galleryRef.innerHTML = "";
   imgFetch(query, page).then((arr) => {
     refs.galleryRef.insertAdjacentHTML("beforeEnd", galleryTemplate(arr));
-    refs.nextPageButton.classList.remove("is-hidden");
+    if (arr.length === 6) {
+      refs.nextPageButton.classList.remove("is-hidden");
+    }
   });
 }
 
@@ -17,18 +19,14 @@ function nextPageRequest(query) {
   page += 1;
   imgFetch(query, page).then((arr) => {
     refs.galleryRef.insertAdjacentHTML("beforeEnd", galleryTemplate(arr));
-    const imgsRef = Array.from(refs.galleryRef.querySelectorAll("img"));
-    imgsRef.map((e) => {
-      e.onload = function () {
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: "smooth",
-        });
-      };
+    if (arr.length != 6) {
+      refs.nextPageButton.classList.add("is-hidden");
+    }
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
     });
   });
 }
 
 export { newRequest, nextPageRequest };
-
-// document.documentElement.scrollHeight;
